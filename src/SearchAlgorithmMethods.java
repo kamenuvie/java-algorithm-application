@@ -47,51 +47,60 @@ public class SearchAlgorithmMethods {
     }
 
 
-    public static int binarySearch(){
-        System.out.print("Enter the array size: ");
-        Scanner Input = new Scanner(System.in);
-        int arr_size = Input.nextInt();
-        System.out.println("Enter the elements in the array:");
-        int[] Array = new int[arr_size];
-        for (int i = 0; i < arr_size; i++) {
-            Array[i] = Input.nextInt();
-            System.out.println(Arrays.toString(Array));
 
 
-        }
-        long startTime = System.nanoTime();
-        long endTime = System.nanoTime();
-        long duration = endTime - startTime;
-        System.out.print("Enter the target number:\n");
-        int target = Input.nextInt();
-        for (int i = 0; i < Array.length; ++i) {
-
-                        if (Array[i] == target) {
-                            System.out.println("Key :" + " " + target + " " + "found at index" + " " + i + " ✅");
-                            System.out.println("Time taken: " + duration +" "+ "nanoseconds \n");
-                            break;
-                        } else {
-                            System.out.println("Key :" + " " + target + " " + "not found at index" + " " + i + "\uD83D\uDEAB ");
-                        }
-                    }
-
-        int low = 0;
-        int high = Array.length - 1;
-        int mid = (low + high - 1) / 2;
 
 
-        while (high >= low) {
-            if (Array[mid] < target) {
-                low = mid + 1;
-            } else if (Array[mid] > target) {
-                high = mid - 1;
+        public static void binarySearch() {
+            Scanner input = new Scanner(System.in);
+            System.out.print("Enter the array size: ");
+            int arrSize = input.nextInt();
 
-            } else {
-                return mid ;
+            int[] array = new int[arrSize];
+            System.out.println("Enter the elements in the array:");
+            for (int i = 0; i < arrSize; i++) {
+                array[i] = input.nextInt();
+                System.out.println( Arrays.toString(array));
             }
 
+            // Ensure the array is sorted for binary search
+            Arrays.sort(array);
+            System.out.println("Sorted array: " + Arrays.toString(array));
+
+            System.out.print("Enter the target number: \n");
+            int target = input.nextInt();
+
+            long startTime = System.nanoTime();
+            int index = performBinarySearch(array, target);
+            long endTime = System.nanoTime();
+            long duration = endTime - startTime;
+
+            if (index != -1) {
+                System.out.println("Key: " + target + " found at index " + index + " ✅");
+            } else {
+                System.out.println("Key: " + target + " not found in the array.");
+            }
+            System.out.println("Time taken: " + duration + " nanoseconds\n");
         }
-        return -1; // not found
+
+        public static int performBinarySearch(int[] array, int target) {
+            int low = 0;
+            int high = array.length - 1;
+
+            while (low <= high) {
+                int mid = low + (high - low) / 2;
+
+                if (array[mid] < target) {
+                    low = mid + 1;
+                } else if (array[mid] > target) {
+                    high = mid - 1;
+                } else {
+                    return mid; // Target found
+                }
+            }
+            return -1; // Target not found
+        }
     }
-}
+
+
 

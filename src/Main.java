@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Main  {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InputMismatchException {
         while (true) {
             try {
                 System.out.print(
@@ -48,41 +48,48 @@ public class Main  {
                                                   case 1:
                                                       System.out.print("You selected a Linear Search. Lets see HOW it WORKS\n");
                                                       SearchAlgorithmMethods.linearSearch();
+                                                      break;
 
                                                   case 2:
                                                       System.out.print("You selected a Binary search algorithm. Lets see HOW it WORKS \n");
                                                       SearchAlgorithmMethods.binarySearch();
+                                                      break;
 
-                                                  default:
-                                                      System.out.print("Invalid methods" + " " + "\uD83D\uDEAB. Please enter 1 or 2 \n");
-//                                                      reply = Input.nextInt();
+//
                                               }
                                           }
                                             catch (InputMismatchException e) {
-                                        System.out.println("Invalid input. Please enter an integer \n.");
+                                        System.out.println("Invalid input. Please enter an integer relative to the Array .\n " +
+                                                "Follow the prompt to avoid error \n" +
+                                                " SELECT \n " +
+                                                "1. Linear Search \n " +
+                                                "2. Binary search \n" +
+                                                "Make sure you choose from these alternatives\n" )
+                                                ;
 
-                    }
+
+                                                int reply = Input.nextInt();
+                                                switch (reply) {
+                                                    case 1:
+                                                        System.out.print("You selected a Linear Search. Lets see HOW it WORKS\n");
+                                                        SearchAlgorithmMethods.linearSearch();
+                                                        break;
+
+                                                    case 2:
+                                                        System.out.print("You selected a Binary search algorithm. Lets see HOW it WORKS \n");
+                                                        SearchAlgorithmMethods.binarySearch();
+                                                        break;
+
+//
+                                                }
+
+
+
+                    };
                                       }
-//                                    if (method == 1) {
-//
-//
-//                                        System.out.print("You selected a Linear Search. Lets see HOW it WORKS\n");
-//                                        SearchAlgorithmMethods.linearSearch();
-//
-//                                    } else if (method == 2) {
-//                                            System.out.print("You selected a Binary search algorithm. Lets see HOW it WORKS \n");
-//                                            SearchAlgorithmMethods.binarySearch();
-//
-//
-//                                    }else
-//                                        System.out.print("Invalid methods"+" "+"\uD83D\uDEAB. Please enter 1 or 2 \n");
-//                                        method = Input.nextInt();
-//
-//                                        System.out.print("TRY AGAIN LATER ->>>>  \n\n");
 
 
-
-                        } else if (choice == 2) {
+                } else if (choice == 2) {
                     System.out.print(" You selected A Sorting Algorithm . Sorting in general is simply arranging aa given element in an order.\n" +
                             "The various types of sorting include the Bubble sort, Selection sort, Insertion sort,Heap sort,Quick sort,Merge sort\n");
 
@@ -108,7 +115,7 @@ public class Main  {
                                     SortAlgorithmMethods.InsertionSort();
                                     break;
 
-                        case 4 :    System.out.print("You selected a Heap sort algorithm. Lets see HOW it WORKS \n");
+                        case 4 :    System.out.print("You selected a CockShaker sort algorithm. Lets see HOW it WORKS \n");
                                     SortAlgorithmMethods.CockShakerSort();
                                     break;
 
@@ -125,7 +132,8 @@ public class Main  {
                     System.out.print("Invalid choice" + " " + "\uD83D\uDEAB . Please enter 1 or 2 \n.");
 
             } catch (InputMismatchException e) {
-                System.out.println("Invalid input. Please enter an integer \n.");
+                System.out.println("Invalid input. Please enter an integer on your next attempt.... \n." +
+                        "NB ➡: Always follow instruction in order not to get lost");
 
             }
         }
